@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate 100 QR Codes</title>
+  <style>
+    .qr-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .qr-item {
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>100 QRs</h1>
+  <div class="qr-container" id="qrContainer"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const url = "https://www.camarabadajoz.es/talentday/attendance/";
+    const numberOfQRCodes = 100;
+    const qrContainer = document.getElementById('qrContainer');
+
+    for (let i = 1; i <= numberOfQRCodes; i++) {
+      const qrItem = document.createElement('div');
+      qrItem.className = 'qr-item';
+      qrContainer.appendChild(qrItem);
+
+      new QRCode(qrItem, {
+        text: url + i.toString(),
+        width: 200,
+        height: 200,
+      });
+    }
+  </script>
+</body>
+</html>
